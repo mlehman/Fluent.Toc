@@ -1,0 +1,5 @@
+*.sln.cache
+bin
+obj
+*.suo
+*.user
