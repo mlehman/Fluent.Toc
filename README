@@ -1,0 +1,35 @@
+NOTICE: AOL has dropped support for the TOC 1.0 Protocol. The alpha release of Fluent.Toc 0.3 supports the new TOC 2.0 Protocol
+
+Fluent.Toc is a .NET component written in C# for communicating with AOL's Instant Messenger (AIM) service. Initially ported from JavaTOC, Fluent.Toc has been extended with more features and redesigned as a .NET API. Fluent.Toc is released under the LGPL.
+
+0.3 Release Features
+
+ - TOC 2.0 Support.
+
+0.2 Release Features
+
+ - Send and receive instant messages.
+ - Retrieval and configuration of buddy lists.
+ - Warn, permit and deny buddies.
+ - Idle and away notification.
+ - Password change.
+ - Uses simple events for notifications.
+ - Message throttling.
+
+Send Message Example
+
+ TocClient tc = new TocClient();
+ tc.SignOn("myscreenname","password");
+ tc.Send("mybuddy","Hello!");
+ tc.SignOff();
+
+Receive Message Example
+
+  TocClient tc = new TocClient();
+  tc.Message += new MessageEventHandler(OnMessage);
+  tc.SignOn("myscreenname","password");
+  tc.StartListening();
+  ...
+  protected void  OnMessage(object sender, MessageEventArgs e){
+    WriteLine("{0}: {1}",e.From, e.Message);
+  }
